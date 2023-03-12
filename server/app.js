@@ -14,7 +14,7 @@ const io = require("socket.io")(http, {
 const port = 8000;
 
 app.use(cors());
-app.use(express.static(path.join(__dirname + "/../app/", "build")));
+app.use(express.static(path.join(__dirname + "/../test/", "build")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/../test/", "build", "index.html"));
