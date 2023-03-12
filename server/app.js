@@ -4,11 +4,10 @@ const express = require("express");
 
 const app = express();
 const http = require("http").Server(app);
-const SHT30 = require('@chirimen/sht30')
-const sht30 = new SHT30('GPIO2', 0x44);
+//const SHT30 = require('@chirimen/sht30')
+//const sht30 = new SHT30('GPIO2', 0x44);
 
 
-console.log('SHT30', SHT30)
 
 const io = require("socket.io")(http, {
   cors: {
@@ -22,13 +21,12 @@ app.use(cors());
 app.use(express.static(path.join(__dirname + "/../app/", "build")));
 
 app.get("/", (req, res) => {
-  //res.sendFile(path.join(__dirname + "/../app/", "build", "index.html"));
+  res.sendFile(path.join(__dirname + "/../app/", "build", "index.html"));
+
 });
 
 app.get("/info", async (req, res) => {
-  await sht30.init();
-  const { humidity, temperature } = await sht30.readData();
-  console.log('humidity',humidity)
+
   res.send({
     temperature: 23,
     humidity: 60,
