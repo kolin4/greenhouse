@@ -1,13 +1,12 @@
 const path = require("path");
 const cors = require("cors");
 const express = require("express");
-
 const app = express();
 const http = require("http").Server(app);
 const { SHT31 } = require('sht31-node')
 
 const sht31 = new SHT31()
-
+const {sensorData} = require('./sht30')
 
 const io = require("socket.io")(http, {
   cors: {
@@ -24,25 +23,23 @@ app.use(express.static(path.join(__dirname + "/../test/", "build")));
 
 app.get("/", async(req, res) => { 
   //res.sendFile(path.join(__dirname + "/../test/", "build", "index.html"));
-  return sht31.readSensorData().then(data => {
-    console.log('data',data)
-    // Temperature in Celsius
-    const temperature = data.temperature.toFixed(2)
-    const humidity =  data.humidity.toFixed(2)
+//   return sht31.readSensorData().then(data => {
+//     // Temperature in Celsius
+//     const temperature = data.temperature.toFixed(2)
+//     const humidity =  data.humidity.toFixed(2)
     
-  console.log(`The temperature is: ${temperature}°C`)
-  console.log(`The Humidity is: ${humidity}%`)
 
-  res.send({
-    humidity:humidity,
-    temperature:temperature
-  })
-}).catch(console.log)
-  res.send({
-    humidity:'error',
-    temperature:'error'
-  })
-});
+//   res.send({
+//     humidity:humidity,
+//     temperature:temperature
+//   })
+// }).catch(console.log)
+//   res.send({
+//     humidity:'error',
+//     temperature:'error'
+//   })
+  return sensorData()
+ });
 
 app.get("/info", (req, res) => {
   res.send({
