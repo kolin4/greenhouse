@@ -4,6 +4,7 @@ const express = require("express");
 
 const app = express();
 const http = require("http").Server(app);
+const { SHT31 } = require('sht31-node')
 
 const sht31 = new SHT31()
 
