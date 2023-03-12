@@ -7,7 +7,7 @@ const { SHT31 } = require('sht31-node')
 
 const sht31 = new SHT31()
 const {sensorData} = require('./sht30')
-
+console.log('sensorData',sensorData)
 const io = require("socket.io")(http, {
   cors: {
     origin: "*",
