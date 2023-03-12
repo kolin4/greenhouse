@@ -10,14 +10,16 @@ module.exports = {
             const humidity =  data.humidity.toFixed(2)
             
         
-          res.send({
+          return {
             humidity:humidity,
             temperature:temperature
-          })
-        }).catch(console.log)
-          res.send({
-            humidity:'error',
-            temperature:'error'
-          }) 
+          }
+        }).catch(console.log) {
+            return{
+                humidity:'error',
+                temperature:'error'
+              }
+        }
+        
     }
 }  

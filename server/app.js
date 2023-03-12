@@ -38,7 +38,8 @@ app.get("/", async(req, res) => {
 //     humidity:'error',
 //     temperature:'error'
 //   })
-  return sensorData()
+
+  return res.send(sensorData())
  });
 
 app.get("/info", (req, res) => {
