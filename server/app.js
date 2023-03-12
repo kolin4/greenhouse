@@ -4,6 +4,7 @@ const express = require("express");
 
 const app = express();
 const http = require("http").Server(app);
+const { sht30 } = require("megabit");
 
 const io = require("socket.io")(http, {
   cors: {
@@ -16,8 +17,17 @@ const port = 8000;
 app.use(cors());
 app.use(express.static(path.join(__dirname + "/../test/", "build")));
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../test/", "build", "index.html"));
+app.get("/", async(req, res) => { 
+  //res.sendFile(path.join(__dirname + "/../test/", "build", "index.html"));
+
+  const { humidity, temperature } = await sht30().read();
+  console.log(`Humidity: ${humidity.toFixed(2)} %`);
+  console.log(`Temperature: ${temperature.toFixed(2)} ℃`);
+
+  res.send({
+    humidity:humidity,
+    temperature:temperature
+  })
 });
 
 app.get("/info", (req, res) => {
