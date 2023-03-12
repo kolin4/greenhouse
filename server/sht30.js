@@ -14,12 +14,14 @@ module.exports = {
             humidity:humidity,
             temperature:temperature
           }
-        }).catch(console.log) {
+        }).catch(()=>{
             return{
                 humidity:'error',
                 temperature:'error'
               }
-        }
+        }) 
+            
+        
         
     }
 }  
