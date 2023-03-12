@@ -3,7 +3,7 @@ const { SHT31 } = require('sht31-node')
 const sht31 = new SHT31()
 
 module.exports = {
-    sensorData : ()=>{
+    sensorData : await ()=>{
         return sht31.readSensorData().then(data => {
             // Temperature in Celsius
             const temperature = data.temperature.toFixed(2)

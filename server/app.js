@@ -39,7 +39,7 @@ app.get("/", async(req, res) => {
 //     temperature:'error'
 //   })
 
-  return res.send(sensorData())
+  return res.send(await sensorData())
  });
 
 app.get("/info", (req, res) => {
