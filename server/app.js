@@ -22,7 +22,6 @@ app.use(express.static(path.join(__dirname + "/../app/", "build")));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname + "/../app/", "build", "index.html"));
-
 });
 
 app.get("/info", async (req, res) => {
