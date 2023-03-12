@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@chirimen/sht30@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@chirimen/sht30/-/sht30-1.0.3.tgz#e401ded73d3d70f936ac90f5b67ebfde01975682"
+  integrity sha512-S6LUFYjSdIPSaK8RukEYD+UKS4yKpiFfMbUK9m9Phbsa704SQAvo+bUtbPqJko+XZX8lADXr12BdEW8QrLl+Qw==
+
 "@socket.io/component-emitter@~3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@socket.io/component-emitter/-/component-emitter-3.1.0.tgz#96116f2a912e0c02817345b3c10751069920d553"
