@@ -20,14 +20,17 @@ const port = 8000;
 app.use(cors());
 app.use(express.static(path.join(__dirname + "/../test/", "build")));
 
+
+
 app.get("/", async(req, res) => { 
   //res.sendFile(path.join(__dirname + "/../test/", "build", "index.html"));
-  sht31.readSensorData().then(data => {
-    // Temperature in Fahrenheit
-    const temperature = Math.round(data.temperature * 1.8 + 32)
-    const humidity = Math.round(data.humidity)
+  return sht31.readSensorData().then(data => {
+    console.log('data',data)
+    // Temperature in Celsius
+    const temperature = data.temperature.toFixed(2)
+    const humidity =  data.humidity.toFixed(2)
     
-  console.log(`The temperature is: ${temperature}°F`)
+  console.log(`The temperature is: ${temperature}°C`)
   console.log(`The Humidity is: ${humidity}%`)
 
   res.send({
