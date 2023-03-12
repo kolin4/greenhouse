@@ -457,6 +457,14 @@ http-errors@1.6.3, http-errors@~1.6.2, http-errors@~1.6.3:
     setprototypeof "1.1.0"
     statuses ">= 1.4.0 < 2"
 
+i2c-bus@^4.0.10:
+  version "4.0.11"
+  resolved "https://registry.yarnpkg.com/i2c-bus/-/i2c-bus-4.0.11.tgz#fc1dccc863d15ea62261b844b3fbf0a3cf73c903"
+  integrity sha512-JIL9ezw3cavIDnk98vYh0FOX/yiMVeG98x2KT+ZJZqXNwyLnaNfYXcHk9t8xih2cYZzy050Kp4ZUcpASuT57dg==
+  dependencies:
+    bindings "^1.5.0"
+    nan "^2.14.0"
+
 i2c-bus@^5.2.2:
   version "5.2.2"
   resolved "https://registry.yarnpkg.com/i2c-bus/-/i2c-bus-5.2.2.tgz#0c727f5e99443c5734b4f0e05b45748ba85008fa"
@@ -624,7 +632,7 @@ ms@2.1.2:
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
   integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
 
-nan@^2.14.2:
+nan@^2.14.0, nan@^2.14.2:
   version "2.17.0"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.17.0.tgz#c0150a2368a182f033e9aa5195ec76ea41a199cb"
   integrity sha512-2ZTgtl0nJsO0KQCjEpxcIr5D+Yv90plTitZt9JBfQvVJDS5seMl3FOvsh3+9CoYWXf/1l5OaZzzF6nDm4cagaQ==
@@ -779,6 +787,13 @@ setprototypeof@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.1.0.tgz#d0bd85536887b6fe7c0d818cb962d9d91c54e656"
   integrity sha512-BvE/TwpZX4FXExxOxZyRGQQv651MSwmWKZGqvmPcRIjDqWub67kTKuIMx43cZZrS/cBBzwBcNDWoFxt2XEFIpQ==
+
+sht31-node@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/sht31-node/-/sht31-node-1.0.1.tgz#59c6e737a4986c76ad2fb4b5bfeeba7051065469"
+  integrity sha512-5YZ9VEZThdtx49473dk1SbsRkAcjHMm6lS/8CPFAxX/7GM4aoSpfFd82gZYVwEwuQnHqugKYctQOUEgGVlZgUg==
+  dependencies:
+    i2c-bus "^4.0.10"
 
 socket.io-adapter@~2.5.2:
   version "2.5.2"
