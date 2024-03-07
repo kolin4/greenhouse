@@ -22,28 +22,7 @@ app.use(express.static(path.join(__dirname + "/../test/", "build")));
 
 
 app.get("/", async(req, res) => { 
-  //res.sendFile(path.join(__dirname + "/../test/", "build", "index.html"));
-//   return sht31.readSensorData().then(data => {
-//     // Temperature in Celsius
-//     const temperature = data.temperature.toFixed(2)
-//     const humidity =  data.humidity.toFixed(2)
-    
-
-//   res.send({
-//     humidity:humidity,
-//     temperature:temperature
-//   })
-// }).catch(console.log)
-//   res.send({
-//     humidity:'error',
-//     temperature:'error'
-//   })
-  const sensor1 = await sensorData()
-  const sensor2 = await sensorData2()
-
-  return res.send({
-    sensor1,sensor2
-  })
+  return res.send(await sensorData())
  });
 
 app.get("/info", (req, res) => {
