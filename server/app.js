@@ -14,16 +14,11 @@ io.on('connection', (socket) => {
   },500)
 
   console.log('adsasd') });
-// const app = require('express')();
-// const server = require('http').createServer(app);
-// const io = require('socket.io')(server);
-// io.on('connection', () => { /* … */ });
-//server.listen(3000);
 
 const port = 8000
 
 app.use(cors());
-app.use(express.static(path.join(__dirname + "/../app/", "build")));
+app.use(express.static(path.join(__dirname + "/../application/", "build")));
 
 
 app.get("/", async(req, res) => { 
@@ -31,7 +26,7 @@ app.get("/", async(req, res) => {
  });
 
 app.get("/info", (req, res) => {
-  res.sendFile(path.join(__dirname + "/../app/", "build", "index.html"));
+  res.sendFile(path.join(__dirname + "/../application/", "build", "index.html"));
 });
 
 server.listen(port, () => {
