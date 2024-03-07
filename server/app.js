@@ -1,24 +1,29 @@
 const path = require("path");
 const cors = require("cors");
 const express = require("express");
+const {sensorData} = require('./sht30')
 const app = express();
-const http = require("http").Server(app);
-const { SHT31 } = require('sht31-node')
+const server = require("http").createServer(app);
+const io = require('socket.io')(server);
 
-const sht31 = new SHT31()
-const {sensorData, sensorData2} = require('./sht30')
-console.log('sensorData',sensorData)
-const io = require("socket.io")(http, {
-  cors: {
-    origin: "*",
-  },
-});
 
-const port = 8000;
+io.on('connection', (socket) => { 
+  
+  setInterval(async ()=>{
+    socket.emit('data',await sensorData())
+  },500)
+
+  console.log('adsasd') });
+// const app = require('express')();
+// const server = require('http').createServer(app);
+// const io = require('socket.io')(server);
+// io.on('connection', () => { /* … */ });
+//server.listen(3000);
+
+const port = 8000
 
 app.use(cors());
-app.use(express.static(path.join(__dirname + "/../test/", "build")));
-
+app.use(express.static(path.join(__dirname + "/../app/", "build")));
 
 
 app.get("/", async(req, res) => { 
@@ -26,30 +31,9 @@ app.get("/", async(req, res) => {
  });
 
 app.get("/info", (req, res) => {
-  res.send({
-    temperature: 23,
-    humidity: 60,
-  });
+  res.sendFile(path.join(__dirname + "/../app/", "build", "index.html"));
 });
 
-//Whenever someone connects this gets executed
-io.on("connection", function (socket) {
-  console.log("A user connected");
-
-  const interval = setInterval(() => {
-    socket.emit("basicData", {
-      temperature: Math.floor(Math.random() * 100),
-      humidity: Math.floor(Math.random() * 20),
-    });
-  }, 2000);
-
-  //Whenever someone disconnects this piece of code executed
-  socket.on("disconnect", function () {
-    console.log("A user disconnected");
-    clearInterval(interval);
-  });
-});
-
-http.listen(port, () => {
+server.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
