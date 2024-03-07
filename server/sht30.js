@@ -6,14 +6,13 @@ module.exports = {
     sensorData :  ()=>{
         return sht31.readSensorData().then(data => {
             // Temperature in Celsius
-            const temperature = data.temperature
-            const humidity =  data.humidity
+            const temperature = data.temperature.toFixed(2)
+            const humidity =  data.humidity.toFixed(2)
             
         
           return {
             humidity:humidity,
             temperature:temperature,
-            adjustedTemp: temperature -1
           }
         }).catch(()=>{
             return{
