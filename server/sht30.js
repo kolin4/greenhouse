@@ -1,6 +1,8 @@
 const { SHT31 } = require('sht31-node')
-
+const SHT30 = require(`sht31`);
+const sht30 = new SHT30(0x44, 1); 
 const sht31 = new SHT31()
+
 
 module.exports = {
     sensorData :  ()=>{
@@ -23,5 +25,20 @@ module.exports = {
             
         
         
-    }
+    },
+    sensorData2:()=> sht30
+    .init()
+    .then(() => sht30.readSensorData())
+    .then((data) => {
+      // data object follows this format:
+      // { temperature: Number, humidity: Number }
+      // temperature is in celcius unit.
+      return {
+        ...data
+      }
+    })
+    .catch((err) => {
+      // Handle error here
+      // ...
+    })
 }  

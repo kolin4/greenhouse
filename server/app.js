@@ -6,7 +6,7 @@ const http = require("http").Server(app);
 const { SHT31 } = require('sht31-node')
 
 const sht31 = new SHT31()
-const {sensorData} = require('./sht30')
+const {sensorData, sensorData2} = require('./sht30')
 console.log('sensorData',sensorData)
 const io = require("socket.io")(http, {
   cors: {
@@ -38,8 +38,12 @@ app.get("/", async(req, res) => {
 //     humidity:'error',
 //     temperature:'error'
 //   })
+  const sensor1 = await sensorData()
+  const sensor2 = await sensorData2()
 
-  return res.send(await sensorData())
+  return res.send({
+    sensor1,sensor2
+  })
  });
 
 app.get("/info", (req, res) => {
