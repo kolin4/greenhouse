@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded',()=>{
   const hum = document.getElementById('hum')
 
   socket.on("data", (arg) => {
-    console.log(arg); // world
     temp.innerText = arg.temperature
     hum.innerText = arg.humidity
   });
